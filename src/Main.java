@@ -18,23 +18,23 @@ public class Main {
         System.out.println("To convert to Canadian Dollar's please press 5");
         System.out.println("To convert to Danish Krone's please press 6");
 
-        double euroAmount = (gbpAmount * 1.15);
-        double usdAmount = (gbpAmount * 1.33);
-        double jpyAmount = (gbpAmount * 211.21);
-        double audAmount = (gbpAmount * 1.86);
-        double cadAmount = (gbpAmount * 1.83);
-        double dkkAmount = (gbpAmount * 8.57);
+        userChoice = scanner.nextInt();
 
-    userChoice = scanner.nextInt();
-        switch (userChoice){
-            case 1 -> System.out.println(gbpAmount + " converts to €" + (euroAmount));
-            case 2 -> System.out.println(gbpAmount + " converts to $" + (usdAmount));
-            case 3 -> System.out.println(gbpAmount + " converts to ¥" + (jpyAmount));
-            case 4 -> System.out.println(gbpAmount + " converts to A$" + (audAmount));
-            case 5 -> System.out.println(gbpAmount + " converts to C$" + (cadAmount));
-            case 6 -> System.out.println(gbpAmount + " converts to " + (dkkAmount) + "kr.");
+        convert(userChoice, gbpAmount);
+
+        scanner.close();
+    }
+
+    //You can make a new method that would re-use logic
+    public static void convert(int choice, double gpbAmount) {
+        switch (choice) {
+            case 1 -> System.out.println(gpbAmount + " converts to €" + (gpbAmount * 1.15));
+            case 2 -> System.out.println(gpbAmount + " converts to $" + (gpbAmount * 1.33));
+            case 3 -> System.out.println(gpbAmount + " converts to ¥" + (gpbAmount * 211.21));
+            case 4 -> System.out.println(gpbAmount + " converts to A$" + (gpbAmount * 1.86));
+            case 5 -> System.out.println(gpbAmount + " converts to C$" + (gpbAmount * 1.83));
+            case 6 -> System.out.println(gpbAmount + " converts to K" + (gpbAmount * 8.57));
             default -> System.out.println("Option not available");
         }
-        scanner.close();
     }
 }
