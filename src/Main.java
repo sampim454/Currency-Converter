@@ -18,23 +18,55 @@ public class Main {
         System.out.println("To convert to Canadian Dollar's please press 5");
         System.out.println("To convert to Danish Krone's please press 6");
 
+        double usdAmount = (gbpAmount * 1.33);
+        double jpyAmount = (gbpAmount * 211.21);
+        double audAmount = (gbpAmount * 1.86);
+        double cadAmount = (gbpAmount * 1.83);
+        double dkkAmount = (gbpAmount * 8.57);
+
         userChoice = scanner.nextInt();
 
-        convert(userChoice, gbpAmount);
-
         scanner.close();
+
+        print(gbpAmount, currencyChoice(userChoice), convert(userChoice, gbpAmount));
+
     }
 
-    //You can make a new method that would re-use logic
-    public static void convert(int choice, double gpbAmount) {
-        switch (choice) {
-            case 1 -> System.out.println(gpbAmount + " converts to €" + (gpbAmount * 1.15));
-            case 2 -> System.out.println(gpbAmount + " converts to $" + (gpbAmount * 1.33));
-            case 3 -> System.out.println(gpbAmount + " converts to ¥" + (gpbAmount * 211.21));
-            case 4 -> System.out.println(gpbAmount + " converts to A$" + (gpbAmount * 1.86));
-            case 5 -> System.out.println(gpbAmount + " converts to C$" + (gpbAmount * 1.83));
-            case 6 -> System.out.println(gpbAmount + " converts to K" + (gpbAmount * 8.57));
-            default -> System.out.println("Option not available");
+
+    public static double convert(int userChoice, double gbpAmount) {
+        double convertedAmount;
+        switch (userChoice){
+            case 1 -> convertedAmount = (gbpAmount * 1.15);
+            default -> convertedAmount = 0;
         }
+        return convertedAmount;
+    }
+
+    public static void print(double gbpAmount, String currency, double convertedAmount) {
+        System.out.println(gbpAmount + " converts to " + currency + " " + convertedAmount);
+    }
+
+    public static String currencyChoice(int userChoice) {
+        String currency = "";
+
+        if (userChoice == 1){
+            currency = "EUR";
+        }
+        if (userChoice == 2){
+            currency = "USD";
+        }
+        if (userChoice == 3){
+            currency = "JPY";
+        }
+        if (userChoice == 4){
+            currency = "AUD";
+        }
+        if (userChoice == 5){
+            currency = "CAD";
+        }
+        if (userChoice == 6){
+            currency = "DKK";
+        }
+        return currency;
     }
 }
