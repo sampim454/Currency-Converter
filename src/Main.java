@@ -27,7 +27,6 @@ public class Main {
 
     }
 
-
     public static double convert(int userChoice, double gbpAmount) {
         double convertedAmount;
         switch (userChoice) {
