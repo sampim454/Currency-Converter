@@ -1,12 +1,13 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args){
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
         double gbpAmount;
         int userChoice;
+
 
         System.out.println("Please enter the GBP amount you would like to be converted: ");
         gbpAmount = scanner.nextDouble();
@@ -17,12 +18,6 @@ public class Main {
         System.out.println("To convert to Australian Dollar's please press 4");
         System.out.println("To convert to Canadian Dollar's please press 5");
         System.out.println("To convert to Danish Krone's please press 6");
-
-        double usdAmount = (gbpAmount * 1.33);
-        double jpyAmount = (gbpAmount * 211.21);
-        double audAmount = (gbpAmount * 1.86);
-        double cadAmount = (gbpAmount * 1.83);
-        double dkkAmount = (gbpAmount * 8.57);
 
         userChoice = scanner.nextInt();
 
@@ -35,8 +30,13 @@ public class Main {
 
     public static double convert(int userChoice, double gbpAmount) {
         double convertedAmount;
-        switch (userChoice){
+        switch (userChoice) {
             case 1 -> convertedAmount = (gbpAmount * 1.15);
+            case 2 -> convertedAmount = (gbpAmount * 1.33);
+            case 3 -> convertedAmount = (gbpAmount * 211.21);
+            case 4 -> convertedAmount = (gbpAmount * 1.86);
+            case 5 -> convertedAmount = (gbpAmount * 1.83);
+            case 6 -> convertedAmount = (gbpAmount * 8.57);
             default -> convertedAmount = 0;
         }
         return convertedAmount;
@@ -46,27 +46,12 @@ public class Main {
         System.out.println(gbpAmount + " converts to " + currency + " " + convertedAmount);
     }
 
-    public static String currencyChoice(int userChoice) {
-        String currency = "";
+    private static final String[] CURRENCIES = {"EUR", "USD", "JPY", "AUD", "CAD", "DKK"};
 
-        if (userChoice == 1){
-            currency = "EUR";
+    public static String currencyChoice(int userChoice) {
+        if (userChoice < 1 || userChoice > CURRENCIES.length) {
+            return "";
         }
-        if (userChoice == 2){
-            currency = "USD";
-        }
-        if (userChoice == 3){
-            currency = "JPY";
-        }
-        if (userChoice == 4){
-            currency = "AUD";
-        }
-        if (userChoice == 5){
-            currency = "CAD";
-        }
-        if (userChoice == 6){
-            currency = "DKK";
-        }
-        return currency;
+        return CURRENCIES[userChoice - 1];
     }
 }
