@@ -8,6 +8,14 @@ public class Main {
         double gbpAmount;
         int userChoice;
 
+        System.out.println("Welcome to the GBP currency converter, do you you want to convert your GBP? (Y/N) ");
+        char toConvert = scanner.next().charAt(0);
+
+        if (toConvert != 'Y') {
+            System.out.println("Goodbye!");
+            return;
+        }
+
 
         System.out.println("Please enter the GBP amount you would like to be converted: ");
         gbpAmount = scanner.nextDouble();
