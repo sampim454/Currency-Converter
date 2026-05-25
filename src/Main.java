@@ -1,7 +1,9 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        System.out.println(ApiConfig.callApi());
 
         Scanner scanner = new Scanner(System.in);
 
